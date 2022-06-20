@@ -5,7 +5,7 @@ import org.example.dominio.Boletim;
 import org.example.dominio.Disciplinas;
 import org.example.repositorio.RepositorioBoletins;
 
-import java.util.Collections;
+
 
 public class ImprimirBoletim {
 
