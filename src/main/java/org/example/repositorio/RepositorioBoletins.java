@@ -4,10 +4,7 @@ package org.example.repositorio;
 import org.example.dominio.Aluno;
 import org.example.dominio.Boletim;
 import org.example.dominio.Disciplinas;
-
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RepositorioBoletins {
@@ -28,15 +25,29 @@ public class RepositorioBoletins {
 
 
 
-    public void salvar(Boletim boletim) {
-        boletinsCadastrados.add(boletim);
+    public ArrayList<Boletim> salvar(Boletim boletim) {
+        if(boletinsCadastrados.isEmpty()){
+            boletinsCadastrados.add(boletim);
+        } else {
+            for (Boletim boletimCadastrado : boletinsCadastrados) {
+                if (boletimCadastrado.equals(boletim)) {
+                    boletimCadastrado.setNota(boletim.getNota(boletim.getBimestre()), boletim.getBimestre());
+                    return boletinsCadastrados;
+                } else {
+                    boletinsCadastrados.add(boletim);
+                    return boletinsCadastrados;
+                }
+            }
+        }
+        return boletinsCadastrados;
     }
 
 
-    public void alterarNotaCadastrada(Boletim boletim, double nota) {
+
+    public void alterarNotaCadastrada(Boletim boletim, double nota, int bimestre) {
         for (Boletim boletimCadastrado : boletinsCadastrados) {
             if (boletimCadastrado.equals(boletim)) {
-                boletimCadastrado.setNota(nota);
+                boletimCadastrado.setNota(nota, bimestre);
             }
         }
     }
@@ -50,8 +61,6 @@ public class RepositorioBoletins {
         return null;
     }
 
-
-
     public List<Boletim> getBoletimPorAluno(Aluno aluno){
         List<Boletim> boletimPorAluno = new ArrayList<>();
         for (Boletim boletimCadastrado : boletinsCadastrados) {
@@ -62,16 +71,25 @@ public class RepositorioBoletins {
         return boletimPorAluno;
     }
 
-    public List<Boletim> getBoletimPorAlunoPorDisciplina(Aluno aluno, Disciplinas disciplina){
-        List<Boletim> boletimPorAlunoPorDisciplina = new ArrayList<>();
+    public Boletim getBoletimPorAlunoPorDisciplina(Aluno aluno, Disciplinas disciplina) {
         for (Boletim boletimCadastrado : boletinsCadastrados) {
             if (boletimCadastrado.getAluno().equals(aluno) && boletimCadastrado.getDisciplina().equals(disciplina)) {
-                boletimPorAlunoPorDisciplina.add(boletimCadastrado);
+                return boletimCadastrado;
             }
-        }
-        Collections.sort(boletimPorAlunoPorDisciplina);
-        return boletimPorAlunoPorDisciplina;
+        } return null;
     }
+
+    public List<Boletim> getBoletimPorDisciplina(Disciplinas disciplina) {
+             List<Boletim> listaNotasPorDisciplina = new ArrayList<>();
+        for (Boletim boletimCadastrado : boletinsCadastrados) {
+            if (boletimCadastrado.getDisciplina().name().equalsIgnoreCase(disciplina.name())) {
+                listaNotasPorDisciplina.add(boletimCadastrado);
+
+            }
+            listaNotasPorDisciplina.sort((b1, b2) -> b1.getAluno().getNomeAluno().compareTo(b2.getAluno().getNomeAluno()));
+        } return listaNotasPorDisciplina;
+    }
+
 
 
 }

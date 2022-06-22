@@ -24,6 +24,7 @@ public class MainEscola
             System.out.println("   3 - Enviar Boletim por email         ");
             System.out.println("   4 - Enviar Boletim por SMS           ");
             System.out.println("   5 - Enviar Boletim p/ Impressora     ");
+            System.out.println("   6 - Exibir as notas de uma disciplina");
             System.out.println("   0 - Sair                             ");
             System.out.println("----------------------------------------");
             try{
@@ -46,6 +47,9 @@ public class MainEscola
                 case 4:
                 case 5:
                     TelaEnviarBoletim.executar(sc,option);
+                    break;
+                case 6:
+                    TelaExibirNotasPorDisciplina.executar(sc);
                     break;
             }
 

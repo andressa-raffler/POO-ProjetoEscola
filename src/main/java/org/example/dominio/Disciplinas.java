@@ -4,7 +4,7 @@ public enum Disciplinas {
 
     PORTUGUES,
     CIENCIAS,
-    MATEMTATICA,
+    MATEMATICA,
     HISTORIA,
     GEOGRAFIA;
 
@@ -24,7 +24,9 @@ public enum Disciplinas {
             }
         }
         return null;
+
     }
+
 
 
 

@@ -29,7 +29,7 @@ public class TelaGravarNotaNoBoletim {
                         sc.nextLine();
                         Boletim boletim = new Boletim(aluno, disciplina, bimestre, doubleNota);
                         VerificarSeNotaJaFoiLancada notaJaLancada = new VerificarSeNotaJaFoiLancada(aluno, boletim);
-                        if (!(notaJaLancada.executar(sc, doubleNota))) {
+                        if (!(notaJaLancada.executar(sc, doubleNota, bimestre))) {
                             GravarBoletim.executar(boletim);
                             System.out.println("Nota cadastrada com sucesso");
                         }

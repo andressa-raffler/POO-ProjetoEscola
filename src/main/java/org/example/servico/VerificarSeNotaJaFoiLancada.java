@@ -4,7 +4,7 @@ import org.example.dominio.Aluno;
 import org.example.dominio.Boletim;
 import org.example.repositorio.RepositorioBoletins;
 
-import java.util.Locale;
+
 import java.util.Scanner;
 
 public class VerificarSeNotaJaFoiLancada {
@@ -17,10 +17,10 @@ public class VerificarSeNotaJaFoiLancada {
 
     }
 
-    public boolean executar(Scanner sc, double nota) {
+    public boolean executar(Scanner sc, double nota, int bimestre) {
 
         for (Boletim boletimCadastrado : RepositorioBoletins.getInstance().getBoletimPorAluno(aluno)) {
-            if (boletim.equals(boletimCadastrado)) {
+            if (boletim.equals(boletimCadastrado) && boletimCadastrado.getNota(bimestre)!=0) {
                 System.out.println("Nota ja cadastrada");
                 System.out.println("Deseja substistuir? S / N");
                 String Option = sc.next().toUpperCase();
@@ -29,7 +29,7 @@ public class VerificarSeNotaJaFoiLancada {
                     return true;
                 }
                 if (Option.equals("S")) {
-                    AtualizarNota.executar(boletimCadastrado, nota);
+                    AtualizarNota.executar(boletimCadastrado, nota, boletim.getBimestre());
                     return true;
                 }
             }

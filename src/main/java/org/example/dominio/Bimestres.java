@@ -1,5 +1,8 @@
 package org.example.dominio;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public enum Bimestres {
 
     PRIMEIRO(1),
@@ -21,5 +24,18 @@ public enum Bimestres {
         }
         throw new Exception();
     }
+
+    public int getNumeroBimestre() {
+        return numeroBimestre;
+    }
+
+    public ArrayList<Bimestres> getBimestres(){
+        ArrayList<Bimestres> bimestres;
+        bimestres = new ArrayList<Bimestres>();
+        bimestres.addAll(Arrays.asList(Bimestres.values()));
+        return bimestres;
+    }
+
+
 }
 

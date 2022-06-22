@@ -6,8 +6,8 @@ import org.example.repositorio.RepositorioBoletins;
 public class AtualizarNota {
 
 
-    public static void executar(Boletim boletimCadastrado, double nota) {
-        RepositorioBoletins.getInstance().alterarNotaCadastrada(boletimCadastrado, nota);
+    public static void executar(Boletim boletimCadastrado, double nota, int bimestre) {
+        RepositorioBoletins.getInstance().alterarNotaCadastrada(boletimCadastrado, nota, bimestre);
         System.out.println("Nota atualizada com sucesso!");
     }
 }

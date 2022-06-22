@@ -1,8 +1,11 @@
 package org.example.repositorio;
 
 import org.example.dominio.Aluno;
+import org.example.dominio.Boletim;
+import org.example.dominio.Disciplinas;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepositorioAlunos {
 
@@ -33,6 +36,15 @@ public class RepositorioAlunos {
         }
         return null;
     }
+
+    public ArrayList<Aluno> getAlunosCadastrados() {
+        ArrayList<Aluno> listaAlunosCadastrados = null;
+        for (Aluno alunoCadastrado : alunosCadastrados) {
+            listaAlunosCadastrados.add(alunoCadastrado);
+            return listaAlunosCadastrados;
+        } return null;
+    }
 }
+
 
 
